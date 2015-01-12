@@ -103,10 +103,20 @@ define([], function() {
         return {
             constructor: Dictionary,
 
+            /**
+             * Returns amount of key-value pairs in dictionary
+             * @return {number}
+             */
             size : function() {
                 return this._count;
             },
 
+            /**
+             * Checks if dictionary is empty
+             * @return {boolean} - true if there is no
+             *      key-value pairs in it,
+             *                   - false otherwise
+             */
             isEmpty : function() {
                 return this.size() === 0;
             },
@@ -141,6 +151,12 @@ define([], function() {
                 return oldValue;
             },
 
+            /**
+             * Removes a key-value pair by specified key
+             * @param key - key of a pair to be removed
+             * @return {boolean} - true if removed successfully,
+             *                   - false otherwise
+             */
             remove : function (key) {
                 var keyIndex = this._(indexInArray)(this._keyObjects, key);
                 if (keyIndex < 0) return false;
@@ -150,6 +166,12 @@ define([], function() {
                 return true;
             },
 
+            /**
+             * Used to iterate over all kay-value pairs. A function
+             * of two parameters should be passed where first parameter
+             * is a key and second is a value
+             * @param _callback - iteration function
+             */
             each : function(_callback) {
                 for (var i = 0; i < this.size(); i++) {
                     _callback(
@@ -158,6 +180,14 @@ define([], function() {
                 }
             },
 
+            /**
+             * Checks if specified key exists and returns true
+             * if there is such key in the dictionary, false
+             * otherwise
+             * @param key - key to check
+             * @return {boolean} - true if key exists,
+             *                   - false otherwise
+             */
             isKeyExists : function (key) {
                 return this._(isExistsInArray)(this._keyObjects, key);
             },

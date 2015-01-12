@@ -114,8 +114,8 @@ define(['dictionary'], function(Dictionary){
             },
 
             /**
-             *
-             * @param to
+             * Unsubscribe from receiving all notifications
+             * @param to - receiver to unsubscribe
              */
             unsubscribe : function (to) {
                 var me = this;
