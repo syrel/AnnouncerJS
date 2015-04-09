@@ -24,7 +24,13 @@
 
 "use strict";
 define([], function() {
-
+    /**
+     * Dictionary like data structure
+     *
+     * @module Dictionary
+     * @exports Dictionary
+     * @class Dictionary
+     */
     function Dictionary() {
         this._keyObjects = [];
         this._valueObjects = [];
@@ -121,6 +127,9 @@ define([], function() {
                 return this.size() === 0;
             },
 
+            /**
+             * @returns {Array.<T>}
+             */
             keys : function() {
                 return this._keyObjects.slice(0);
             },
@@ -148,7 +157,7 @@ define([], function() {
                 keyIndex = this._(putInArray)(this._keyObjects, key);
                 putInArrayAt(this._valueObjects, value, keyIndex);
                 this._count++;
-                return oldValue;
+                return value;
             },
 
             /**
@@ -178,6 +187,14 @@ define([], function() {
                         this._(getFromArrayAt)(this._keyObjects, i),
                         this._(getFromArrayAt)(this._valueObjects, i));
                 }
+            },
+
+            asObject : function () {
+                var obj = { };
+                this.each(function(key, value) {
+                    obj[key] = value;
+                });
+                return obj;
             },
 
             /**
